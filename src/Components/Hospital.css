@@ -1,0 +1,11 @@
+.hospital {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.hospital > h1 {
+  font-size: 2.8rem;
+  font-weight: bolder;
+}

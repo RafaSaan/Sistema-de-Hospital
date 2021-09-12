@@ -3,8 +3,11 @@
 }
 .data__form {
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr)); */
 }
 label {
   font-size: 1.5rem;
@@ -15,4 +18,8 @@ select {
   margin-left: 0.5rem;
   outline: none;
   border-bottom: rgb(9, 189, 209) 2px solid;
+}
+.messge-empty {
+  font-size: 1.5rem;
+  margin-top: 2rem;
 }

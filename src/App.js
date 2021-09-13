@@ -1,5 +1,5 @@
 import "./App.css";
-import Hospital from "./Components/Hospital";
+import Hospital from "./Components/InputsData/Hospital";
 
 function App() {
   return (

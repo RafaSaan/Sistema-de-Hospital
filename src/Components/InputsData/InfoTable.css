@@ -1,0 +1,18 @@
+.info__table {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 2rem auto;
+}
+.info__row {
+  margin: 0 1rem;
+  width: 30rem;
+  display: flex;
+  border-bottom: 0.1rem solid #000;
+}
+.info__row > div {
+  font-size: 1.8rem;
+  margin: 1rem 1.5rem;
+}

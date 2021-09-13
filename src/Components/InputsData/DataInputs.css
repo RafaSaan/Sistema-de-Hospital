@@ -1,0 +1,32 @@
+.data__inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 2.5rem auto;
+}
+input,
+.data__submit {
+  height: 3rem;
+  font-family: inherit;
+  font-size: 2rem;
+  margin: 1rem auto;
+  outline: none;
+  margin-left: 0.5rem;
+  font-weight: lighter;
+  border: 1px solid #000;
+  border-bottom: rgb(9, 189, 209) 2px solid;
+  border-radius: 0.3rem;
+}
+.data__submit {
+  width: 10rem;
+  font-size: 1.5rem;
+  display: inline-block;
+  margin: 0;
+  cursor: pointer;
+  border: rgb(9, 189, 209) 1px solid;
+}
+.input-error {
+  font-size: 1.2rem;
+  color: rgb(255, 0, 0);
+  margin: 1rem auto;
+}

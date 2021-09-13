@@ -1,12 +1,14 @@
 import { useState } from "react";
 import DataInputs from "./DataInputs";
 import "./FormGetData.css";
+import InfoTable from "./InfoTable";
 // import NamesInput from "./NamesInput";
 /*Use el use effect para renderizar inputs nombres de pacientes, meter estos nombres en un variable de estado y con esa variable usar un map para renderizar inputos de datos y actulizar estos datos en el estado para pintarlos despues */
 let numberPacients = [];
 const FormGetData = () => {
   const [initalPacient, setInitalPacient] = useState({});
-  const [dataPacient, setDataPacient] = useState({});
+  const [dataFinal, setDataFinal] = useState();
+  const [isComplete, setIsComplete] = useState(false);
 
   const handleChange = e => {
     setInitalPacient({
@@ -14,11 +16,10 @@ const FormGetData = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const handleChangeDataPacients = e => {
-    setDataPacient({
-      ...dataPacient,
-      [e.target.name]: e.target.value,
-    });
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    setIsComplete(true);
   };
 
   let numPacientP = parseInt(initalPacient.number);
@@ -30,7 +31,7 @@ const FormGetData = () => {
 
   return (
     <div className="hospital__form">
-      <form className="data__form">
+      <form className="data__form" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="number">N° de pacientes</label>
           <select
@@ -49,20 +50,21 @@ const FormGetData = () => {
             <option value={5}>5</option>
           </select>
         </div>
-        {/* {numberPacients.length >= 1 && <div>DATAAAAAAAAAAAAAA</div>} */}
+
+        {numberPacients.length !== 0 && <InfoTable />}
+
         {numberPacients.length === 0 ? (
           <div className="messge-empty"> Ingresa el numero de pacientes</div>
         ) : (
           numberPacients.map((el, i) => (
-            <DataInputs
-              key={i + 0.26}
-              i={i}
-              handleChangeDataPacients={handleChangeDataPacients}
-              dataPacient={dataPacient}
-            />
+            <DataInputs key={i + 0.26} i={i} setDataFinal={setDataFinal} />
           ))
         )}
+        {numberPacients.length !== 0 && (
+          <button className="data__submit">Cotizar</button>
+        )}
       </form>
+      {/* {isComplete && <div>DATAAAAAAAAAAA</div>} */}
     </div>
   );
 };

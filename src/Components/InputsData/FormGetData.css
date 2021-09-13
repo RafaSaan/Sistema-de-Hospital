@@ -13,11 +13,14 @@ label {
   font-size: 1.5rem;
 }
 select {
-  width: 10rem;
-  font-size: 1.3rem;
+  width: 15rem;
+  height: 3rem;
+  margin: 1rem auto;
+  font-size: 1.5rem;
   margin-left: 0.5rem;
   outline: none;
   border-bottom: rgb(9, 189, 209) 2px solid;
+  border-radius: 0.3rem;
 }
 .messge-empty {
   font-size: 1.5rem;

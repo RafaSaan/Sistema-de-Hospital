@@ -6,7 +6,9 @@ let initialForm = {
   tratamiento: "",
   dias: "",
 };
-const DataInputs = ({ i, setDataFinal }) => {
+let arrayDatapacient = [];
+
+const DataInputs = ({ i, updateData, isComplete }) => {
   const [dataPacient, setDataPacient] = useState(initialForm);
 
   const handleChangeDataPacients = e => {
@@ -15,12 +17,25 @@ const DataInputs = ({ i, setDataFinal }) => {
       [e.target.name]: e.target.value,
     });
   };
+  console.log("re-renderizado");
+
+  // console.log(dataPacient);
+  arrayDatapacient.shift();
+  if (isComplete) {
+  }
+  // console.log(arrayDatapacient);
 
   useEffect(() => {
-    setDataFinal(dataPacient);
-  }, [dataPacient]);
+    arrayDatapacient.push(dataPacient);
+
+    updateData(arrayDatapacient);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isComplete]);
+
+  // setDataFinal(dataPacient);
   const regexNumber = /^[1-9]$|^[1-9][0-9]$|^(100)$/;
-  const regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
+  // const regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
 
   return (
     <div className="data__inputs">
@@ -33,10 +48,11 @@ const DataInputs = ({ i, setDataFinal }) => {
         placeholder="Nombre del paciente"
         value={dataPacient.name}
         onChange={handleChangeDataPacients}
+        required
       />
-      {!regexName.test(dataPacient.nombre.trim()) && (
+      {/* {!regexName.test(dataPacient.nombre.trim()) && (
         <div className="input-error">El campo 'Nombre' solo acepta letras</div>
-      )}
+      )} */}
 
       <label htmlFor="edad">Edad del Paciente: {i + 1}</label>
       <input
@@ -47,6 +63,7 @@ const DataInputs = ({ i, setDataFinal }) => {
         placeholder="Edad del paciente"
         value={dataPacient.name}
         onChange={handleChangeDataPacients}
+        required
       />
 
       {!regexNumber.test(dataPacient.edad.trim()) && (
@@ -61,6 +78,7 @@ const DataInputs = ({ i, setDataFinal }) => {
         id="tratamiento"
         value={dataPacient.name}
         onChange={handleChangeDataPacients}
+        required
       >
         <option value="">---</option>
         <option value="1">1</option>
@@ -75,6 +93,7 @@ const DataInputs = ({ i, setDataFinal }) => {
         id="dias"
         value={dataPacient.name}
         onChange={handleChangeDataPacients}
+        required
       >
         <option value="">---</option>
         <option value="1">1</option>

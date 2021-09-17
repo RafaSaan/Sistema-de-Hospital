@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ShowData from "../ShowData/ShowData";
 import DataInputs from "./DataInputs";
 import "./FormGetData.css";
 import InfoTable from "./InfoTable";
@@ -7,7 +8,7 @@ import InfoTable from "./InfoTable";
 let numberPacients = [];
 const FormGetData = () => {
   const [initalPacient, setInitalPacient] = useState({});
-  const [dataFinal, setDataFinal] = useState();
+  const [dataFinal, setDataFinal] = useState([]);
   const [isComplete, setIsComplete] = useState(false);
 
   const handleChange = e => {
@@ -22,12 +23,16 @@ const FormGetData = () => {
     setIsComplete(true);
   };
 
+  const updateData = data => {
+    setDataFinal(data);
+  };
   let numPacientP = parseInt(initalPacient.number);
 
   if (isNaN(numPacientP)) {
   } else {
     numberPacients = Array(numPacientP).fill(1);
   }
+  console.log(dataFinal);
 
   return (
     <div className="hospital__form">
@@ -57,7 +62,12 @@ const FormGetData = () => {
           <div className="messge-empty"> Ingresa el numero de pacientes</div>
         ) : (
           numberPacients.map((el, i) => (
-            <DataInputs key={i + 0.26} i={i} setDataFinal={setDataFinal} />
+            <DataInputs
+              key={i + 0.26}
+              i={i}
+              updateData={updateData}
+              isComplete={isComplete}
+            />
           ))
         )}
         {numberPacients.length !== 0 && (
@@ -65,6 +75,10 @@ const FormGetData = () => {
         )}
       </form>
       {/* {isComplete && <div>DATAAAAAAAAAAA</div>} */}
+      {/* {isComplete &&
+        numberPacients.map((el, i) => (
+          <ShowData dataFinal={dataFinal} key={i + 0.26749} />
+        ))} */}
     </div>
   );
 };

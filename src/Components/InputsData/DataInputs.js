@@ -17,7 +17,7 @@ const DataInputs = ({ i, updateData, isComplete }) => {
       [e.target.name]: e.target.value,
     });
   };
-  console.log("re-renderizado");
+  // console.log("re-renderizado");
 
   // console.log(dataPacient);
   arrayDatapacient.shift();

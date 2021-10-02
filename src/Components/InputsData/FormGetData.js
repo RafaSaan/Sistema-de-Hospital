@@ -32,7 +32,8 @@ const FormGetData = () => {
   } else {
     numberPacients = Array(numPacientP).fill(1);
   }
-  console.log(dataFinal);
+  // console.log(dataFinal);
+  // console.log(numberPacients);
 
   return (
     <div className="hospital__form">
@@ -75,10 +76,10 @@ const FormGetData = () => {
         )}
       </form>
       {/* {isComplete && <div>DATAAAAAAAAAAA</div>} */}
-      {/* {isComplete &&
+      {isComplete &&
         numberPacients.map((el, i) => (
-          <ShowData dataFinal={dataFinal} key={i + 0.26749} />
-        ))} */}
+          <ShowData dataFinal={dataFinal} key={i + 0.26749} i={i} />
+        ))}
     </div>
   );
 };
